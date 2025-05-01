@@ -1,0 +1,51 @@
+{
+  "originHash" : "b9353f0a34737f80409a2980ffee59e0ca194ec3dda193db965a44ad4efdde37",
+  "pins" : [
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire.git",
+      "state" : {
+        "revision" : "8dd85aee02e39dd280c75eef88ffdb86eed4b07b",
+        "version" : "5.6.2"
+      }
+    },
+    {
+      "identity" : "alamofireimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/AlamofireImage.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "af1c41645ef2d3ab48ffb3fb3a11941c71e5f9a0"
+      }
+    },
+    {
+      "identity" : "kingfisher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Kingfisher",
+      "state" : {
+        "revision" : "7deda23bbdca612076c5c315003d8638a08ed0f1",
+        "version" : "8.3.2"
+      }
+    },
+    {
+      "identity" : "lottie-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/airbnb/lottie-ios.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "350b177177ea4bc3d4dddb370c5493506ef1dce0"
+      }
+    },
+    {
+      "identity" : "swift-package-network",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kevincosta29/swift-package-network",
+      "state" : {
+        "branch" : "main",
+        "revision" : "de8fc93d62f6ac7f8203b1505bc63930ef917a7d"
+      }
+    }
+  ],
+  "version" : 3
+}
