@@ -12,9 +12,11 @@ struct CharacterListDTO: BaseProtocolDTO {
     var apikey: String = ""
     var hash: String = ""
     var limit: Int
+    var offset: Int
     
-    init(limit: Int) {
+    init(limit: Int, offset: Int) {
         self.limit = limit
+        self.offset = offset
         addCommonParams()
     }
 }

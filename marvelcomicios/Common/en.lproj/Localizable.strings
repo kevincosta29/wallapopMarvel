@@ -15,8 +15,8 @@ RETRY = "Pulsa aquí para volver a intentarlo";
 //////////////////////        MARVEL COMIC        ////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-character.section.comics = "Comics";
-character.section.series = "Series";
-character.section.stories = "Histórias";
+character.detail.section.comics = "Comics";
+character.detail.section.series = "Series";
+character.detail.section.stories = "Histórias";
 character.title = "Personajes";
-
+character.emptyResult = "No se han encontrado valores";

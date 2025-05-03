@@ -9,19 +9,20 @@
 import Foundation
 
 protocol CharacterListPresenterInterface {
-    
     var arrayCharacters: [Character] { get }
     
-    func retrieveCharacterList()
     func viewReady()
     func retryLoad()
     func goToDetail(id: Int)
+    func loadNextPage(indexRow: Int)
 }
 
 final class CharacterListPresenter: CharacterListPresenterInterface {
     
     private var dataSource: CharacterListDataSourceProtocol
     private var flowManager: CharacterListFlowManagerProtocol
+    private var currentPage = 0
+    private var totalPages = 0
     weak var view: CharacterListViewInterface?
     var arrayCharacters: [Character] = []
     
@@ -31,15 +32,17 @@ final class CharacterListPresenter: CharacterListPresenterInterface {
         self.flowManager = flowManager
     }
     
-    func retrieveCharacterList() {
+    private func retrieveCharacterList() {
         view?.toggleLoading()
         Task { @MainActor in
-            let response = await dataSource.getCharacterList()
+            let response = await dataSource.getCharacterList(page: currentPage)
             view?.toggleLoading()
             
             switch response {
-            case .success(let array):
-                arrayCharacters = array
+            case .success((let array, let pages)):
+                arrayCharacters.append(contentsOf: array)
+                currentPage += 1
+                totalPages = pages ?? 0
                 view?.loadContent()
             case .failure(let error):
                 view?.show(errorMessage: error.description)
@@ -52,10 +55,19 @@ final class CharacterListPresenter: CharacterListPresenterInterface {
     }
     
     func retryLoad() {
+        // Something went wrong, so we reset everything to initial state
+        currentPage = 0
+        totalPages = 0
         retrieveCharacterList()
     }
     
     func goToDetail(id: Int) {
         flowManager.goToDetail(character: arrayCharacters[id])
+    }
+    
+    func loadNextPage(indexRow: Int) {
+        if indexRow == arrayCharacters.count - 1 && currentPage < totalPages { // Move to next page and retrieve content
+            retrieveCharacterList()
+        }
     }
 }

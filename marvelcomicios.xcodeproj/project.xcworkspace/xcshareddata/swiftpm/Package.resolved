@@ -1,5 +1,5 @@
 {
-  "originHash" : "b9353f0a34737f80409a2980ffee59e0ca194ec3dda193db965a44ad4efdde37",
+  "originHash" : "6fa12374574b65b29ab62865f3a857d42fc3e614c1687e843cc63ee881c6c669",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -35,6 +35,15 @@
       "state" : {
         "branch" : "master",
         "revision" : "350b177177ea4bc3d4dddb370c5493506ef1dce0"
+      }
+    },
+    {
+      "identity" : "swift-collections",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-collections.git",
+      "state" : {
+        "revision" : "671108c96644956dddcd89dd59c203dcdb36cec7",
+        "version" : "1.1.4"
       }
     },
     {

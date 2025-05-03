@@ -18,13 +18,32 @@ protocol CharacterListViewInterface: AnyObject {
 final class CharacterListViewController: UIViewController {
     
     private let tableView = UITableView()
-    private let viewLoading = UIView()
+    private let loading: UIActivityIndicatorView = {
+        let loading = UIActivityIndicatorView()
+        loading.startAnimating()
+        loading.style = .large
+        loading.isHidden = true
+        return loading
+    }()
+    private lazy var buttonRetry: UIButton = {
+        let button = UIButton()
+        button.setTitle(Localization.Default.errorMessage, for: .normal)
+        button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapButtonRetry)))
+        button.isHidden = true
+        return button
+    }()
     
     private var presenter: CharacterListPresenterInterface
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    /*
+     x -> 1564 resultados
+     1 -> 20
+     
+     
+     */
     
     init(presenter: CharacterListPresenterInterface) {
         self.presenter = presenter
@@ -35,15 +54,12 @@ final class CharacterListViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.isHidden = false
-        
-        self.title = "character.title".localized()
+        title = Localization.CharacterList.title
         
         setupTableView()
         
-        view.addToParent(viewLoading)
-        viewLoading.addLottie()
-        viewLoading.isHidden = true
-        // viewLoading.backgroundColor = .red
+        view.addToParent(loading)
+        view.addToParent(buttonRetry)
         
         presenter.viewReady()
     }
@@ -51,14 +67,16 @@ final class CharacterListViewController: UIViewController {
 
 extension CharacterListViewController: CharacterListViewInterface {
     func toggleLoading() {
-        viewLoading.isHidden = !viewLoading.isHidden
+        loading.isHidden = !loading.isHidden
     }
     
     func show(errorMessage: String) {
-        
+        buttonRetry.setTitle(errorMessage, for: .normal)
+        tableView.isHidden = true
     }
     
     func loadContent() {
+        tableView.isHidden = false
         tableView.reloadData()
     }
 }
@@ -70,6 +88,10 @@ private extension CharacterListViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
+    }
+    
+    @objc func tapButtonRetry() {
+        presenter.retryLoad()
     }
 }
 
@@ -95,6 +117,10 @@ extension CharacterListViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter.goToDetail(id: indexPath.row)
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        presenter.loadNextPage(indexRow: indexPath.row)
     }
     
 }

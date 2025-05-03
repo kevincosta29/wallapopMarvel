@@ -9,6 +9,10 @@
 import Foundation
 import KNetwork
 
+protocol CharacterListDataSourceProtocol {
+    func getCharacterList(page: Int) async -> (Result<([Character], Int?), KNetworkError>)
+}
+
 class CharacterListDataSource: CharacterListDataSourceProtocol {
     
     //-----------------------
@@ -30,16 +34,16 @@ class CharacterListDataSource: CharacterListDataSourceProtocol {
     // MARK: - METHODS
     //-----------------------
     
-    func getCharacterList() async -> (Result<[Character], KNetworkError>) {
-        let endPoint = MarvelComicsEndpoint.wsGetCharacters(params: CharacterListDTO(limit: 50))
+    func getCharacterList(page: Int = 0) async -> (Result<([Character], Int?), KNetworkError>) {
+        let endPoint = MarvelComicsEndpoint.wsGetCharacters(params: CharacterListDTO(limit: 20, offset: page * 20))
         let response = await Service.executeRequest(endpoint: endPoint, model: WSCharactersResponse.self, session: session)
         
         switch response {
         case .success(let response):
             if let arrayCharacters = response.data?.results, !arrayCharacters.isEmpty {
-                return .success(arrayCharacters)
+                return .success((arrayCharacters, response.data?.total ?? 0))
             } else {
-                return .failure(KNetworkError.error(message: "No se han encontrado valores"))
+                return .failure(KNetworkError.error(message: Localization.CharacterList.emptyResult))
             }
         case .failure(let error):
             return .failure(error)
