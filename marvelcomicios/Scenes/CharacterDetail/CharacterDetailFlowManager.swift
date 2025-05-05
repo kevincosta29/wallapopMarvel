@@ -11,9 +11,10 @@ import UIKit
 
 protocol CharacterDetailFlowManagerProtocol {
     func goToWebView(url: URL, title: String)
+    func openModal(arrayLinks: [Link])
 }
 
-class CharacterDetailFlowManager: CharacterDetailFlowManagerProtocol {
+class CharacterDetailFlowManager: NSObject, CharacterDetailFlowManagerProtocol {
     
     // MARK: VARIABLES
     
@@ -26,4 +27,17 @@ class CharacterDetailFlowManager: CharacterDetailFlowManagerProtocol {
         viewController?.navigationController?.pushViewController(webView, animated: true)
     }
     
+    func openModal(arrayLinks: [Link]) {
+        let modalList = ModalListC(arrayLinks: arrayLinks, flowManager: self)
+        modalList.modalPresentationStyle = .custom
+        modalList.transitioningDelegate = self
+        viewController?.navigationController?.present(modalList, animated: true)
+    }
 }
+
+extension CharacterDetailFlowManager: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        PresentationController(presentedViewController: presented, presenting: presenting)
+    }
+}
+

@@ -10,11 +10,11 @@ import Foundation
 import KNetwork
 
 protocol CharacterDetailPresenterInterface {
-    var arrayComics: [Comic] { get }
-    var arraySeries: [Serie] { get }
+    var character: Character { get }
     
     func viewReady()
     func retryLoad()
+    func openModal()
 }
 
 final class CharacterDetailPresenter: CharacterDetailPresenterInterface {
@@ -24,12 +24,12 @@ final class CharacterDetailPresenter: CharacterDetailPresenterInterface {
     // MARK: ============
     //-----------------------
     
-    var arrayComics: [Comic] = []
-    var arraySeries: [Serie] = []
+    var character: Character
+    private var arrayComics: [Comic] = []
+    private var arraySeries: [Serie] = []
     weak var view: CharacterDetailViewInterface?
     private let dataSource: CharacterDetailDataSourceProtocol
     private let flowManager: CharacterDetailFlowManagerProtocol
-    private let character: Character
     
     //-----------------------
     // MARK: - LIVE APP
@@ -58,8 +58,17 @@ final class CharacterDetailPresenter: CharacterDetailPresenterInterface {
             await retrieveComics(id: id)
             await retrieveSeries(id: id)
             view?.toggleLoading()
-            view?.loadContent()
+            // We can use a mapper instead of doing it in that way
+            view?.loadContent(series: arraySeries.map { SectionItem(urlImage: $0.thumbnail?.urlImg, title: $0.title) },
+                              comics: arrayComics.map { SectionItem(urlImage: $0.thumbnail?.urlImg, title: $0.title) },)
         }
+    }
+    
+    func openModal() {
+        guard let links = character.urls else {
+            return
+        }
+        flowManager.openModal(arrayLinks: links)
     }
     
     func retryLoad() {
