@@ -38,12 +38,6 @@ final class CharacterListViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    /*
-     x -> 1564 resultados
-     1 -> 20
-     
-     
-     */
     
     init(presenter: CharacterListPresenterInterface) {
         self.presenter = presenter

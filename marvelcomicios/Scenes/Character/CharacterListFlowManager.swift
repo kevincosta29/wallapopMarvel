@@ -22,8 +22,8 @@ final class CharacterListFlowManager: CharacterListFlowManagerProtocol {
     // MARK: - METHODS
     
     func goToDetail(character: Character) {
-        let flowManager = CharacterDetailFlowManager(navController: navigationController, character: character)
-        flowManager.start()
+        let viewController = CharacterDetailConfigurator.prepareView(for: character)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
 }
