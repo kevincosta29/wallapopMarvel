@@ -22,5 +22,6 @@ enum Localization {
     
     enum Default {
         static var errorMessage = "defaultErrorMsg".localized()
+        static var errorResponse = "error.response.description".localized()
     }
 }

@@ -13,14 +13,11 @@ final class CharacterDetailConfigurator {
     
     static func prepareView(for character: Character) -> UIViewController {
         let dataSource = CharacterDetailDataSource()
-        let flowManager = CharacterDetailFlowManager()
         let presenter = CharacterDetailPresenter(dataSource: dataSource,
-                                                 flowManager: flowManager,
                                                  character: character)
         let viewController = CharacterDetailViewController(presenter: presenter)
         
         presenter.view = viewController
-        flowManager.viewController = viewController
         
         return viewController
     }

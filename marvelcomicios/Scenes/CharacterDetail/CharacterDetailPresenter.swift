@@ -14,7 +14,6 @@ protocol CharacterDetailPresenterInterface {
     
     func viewReady()
     func retryLoad()
-    func openModal()
 }
 
 final class CharacterDetailPresenter: CharacterDetailPresenterInterface {
@@ -29,17 +28,14 @@ final class CharacterDetailPresenter: CharacterDetailPresenterInterface {
     private var arraySeries: [Serie] = []
     weak var view: CharacterDetailViewInterface?
     private let dataSource: CharacterDetailDataSourceProtocol
-    private let flowManager: CharacterDetailFlowManagerProtocol
     
     //-----------------------
     // MARK: - LIVE APP
     //-----------------------
     
     init(dataSource: CharacterDetailDataSourceProtocol,
-         flowManager: CharacterDetailFlowManagerProtocol,
          character: Character) {
         self.dataSource = dataSource
-        self.flowManager = flowManager
         self.character = character
     }
     
@@ -62,13 +58,6 @@ final class CharacterDetailPresenter: CharacterDetailPresenterInterface {
             view?.loadContent(series: arraySeries.map { SectionItem(urlImage: $0.thumbnail?.urlImg, title: $0.title) },
                               comics: arrayComics.map { SectionItem(urlImage: $0.thumbnail?.urlImg, title: $0.title) },)
         }
-    }
-    
-    func openModal() {
-        guard let links = character.urls else {
-            return
-        }
-        flowManager.openModal(arrayLinks: links)
     }
     
     func retryLoad() {
