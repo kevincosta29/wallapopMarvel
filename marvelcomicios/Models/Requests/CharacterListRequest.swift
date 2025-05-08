@@ -7,7 +7,7 @@
 //
 import Foundation
 
-struct CharacterListDTO: BaseProtocolDTO {
+struct CharacterListRequest: BaseProtocolRequest {
     var ts: String = ""
     var apikey: String = ""
     var hash: String = ""

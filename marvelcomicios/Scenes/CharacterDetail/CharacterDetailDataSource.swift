@@ -37,7 +37,7 @@ class CharacterDetailDataSource: CharacterDetailDataSourceProtocol {
     
     func getComics(id: Int) async -> (Result<[Comic], KNetworkError>) {
         let endPoint = MarvelComicsEndpoint.wsGetCharacterComics(id: id)
-        let response = await Service.executeRequest(endpoint: endPoint, model: WSComicsResponse.self, session: session)
+        let response = await Service.executeRequest(endpoint: endPoint, model: ComicsResponse.self, session: session)
         
         switch response {
         case .success(let response):
@@ -53,7 +53,7 @@ class CharacterDetailDataSource: CharacterDetailDataSourceProtocol {
     
     func getSeries(id: Int) async -> (Result<[Serie], KNetworkError>) {
         let endPoint = MarvelComicsEndpoint.wsGetCharacterSeries(id: id)
-        let response = await Service.executeRequest(endpoint: endPoint, model: WSSeriesResponse.self, session: session)
+        let response = await Service.executeRequest(endpoint: endPoint, model: SeriesResponse.self, session: session)
         
         switch response {
         case .success(let response):

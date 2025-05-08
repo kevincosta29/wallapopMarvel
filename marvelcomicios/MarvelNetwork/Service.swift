@@ -33,7 +33,7 @@ final class Service {
             return .success(dataParsed)
         default:
             print("❌ - Service: \(endpoint) - STATUS CODE: - \(result.statusCode) - KO")
-            guard let errorResponse: WSErrorResponse = try? KParser.parserData(result.data) else {
+            guard let errorResponse: ErrorResponse = try? KParser.parserData(result.data) else {
                 return .failure(KNetworkError.error(message: "ERROR RESPONSE - STATUS CODE: \(result.statusCode)"))
             }
             return .failure(KNetworkError.error(message: errorResponse.description))

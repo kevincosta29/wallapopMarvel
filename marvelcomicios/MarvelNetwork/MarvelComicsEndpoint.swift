@@ -12,7 +12,7 @@ import KNetwork
 
 enum MarvelComicsEndpoint: KEndpointProtocol {
     
-    case wsGetCharacters(params: CharacterListDTO)
+    case wsGetCharacters(params: CharacterListRequest)
     case wsGetCharacterComics(id:  Int)
     case wsGetCharacterSeries(id: Int)
     
@@ -44,7 +44,7 @@ enum MarvelComicsEndpoint: KEndpointProtocol {
         case .wsGetCharacters(let reqParam):
             return try? JSONEncoder().encode(reqParam)
         case .wsGetCharacterSeries, .wsGetCharacterComics:
-            let baseReq = BaseDTO()
+            let baseReq = BaseRequest()
             return try? JSONEncoder().encode(baseReq)
         }
     }

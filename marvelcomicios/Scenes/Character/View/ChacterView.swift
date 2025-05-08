@@ -41,7 +41,6 @@ struct CharacterView: View {
         id: 1, name: "Lorem Ipsum",
         description: "Lorem Ipsum",
         modified: nil,
-        thumbnail: nil,
-        urls: nil)
+        thumbnail: nil)
     )
 }

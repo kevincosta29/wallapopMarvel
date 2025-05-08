@@ -35,8 +35,8 @@ class CharacterListDataSource: CharacterListDataSourceProtocol {
     //-----------------------
     
     func getCharacterList(page: Int = 0) async -> (Result<([Character], Int?), KNetworkError>) {
-        let endPoint = MarvelComicsEndpoint.wsGetCharacters(params: CharacterListDTO(limit: 20, offset: page * 20))
-        let response = await Service.executeRequest(endpoint: endPoint, model: WSCharactersResponse.self, session: session)
+        let endPoint = MarvelComicsEndpoint.wsGetCharacters(params: CharacterListRequest(limit: 20, offset: page * 20))
+        let response = await Service.executeRequest(endpoint: endPoint, model: CharactersResponse.self, session: session)
         
         switch response {
         case .success(let response):

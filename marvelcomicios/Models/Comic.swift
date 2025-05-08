@@ -7,17 +7,8 @@
 //
 
 struct Comic: Codable {
-    
     var title       : String?
     var thumbnail   : Thumbnail?
     var description : String?
     var isbn        : String?
-	
-	private enum CodingKeys: String, CodingKey {
-        case title
-        case thumbnail
-        case description
-        case isbn
-	}
-	
 }

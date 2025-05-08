@@ -9,13 +9,13 @@
 import Foundation
 import CryptoKit
 
-protocol BaseProtocolDTO: Codable {
+protocol BaseProtocolRequest: Codable {
     var ts: String { get set }
     var apikey: String { get set }
     var hash: String { get set }
 }
 
-extension BaseProtocolDTO {
+extension BaseProtocolRequest {
     mutating func addCommonParams() {
         let timeStamp = String(Date().timeIntervalSince1970)
         let currentTimeStamp = timeStamp
