@@ -39,6 +39,8 @@ final class CharacterListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private let searchController = UISearchController(searchResultsController: nil)
+    
     init(presenter: CharacterListPresenterInterface) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -50,12 +52,29 @@ final class CharacterListViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
         title = Localization.CharacterList.title
         
+        setupSearchBar()
         setupTableView()
         
         view.addToParent(loading)
         view.addToParent(buttonRetry)
         
         presenter.viewReady()
+    }
+}
+
+extension CharacterListViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        // Update filtered content
+        guard let text = searchController.searchBar.text else {
+            return
+        }
+        presenter.searchFor(text: text)
+        tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        presenter.cancelSearch()
+        tableView.reloadData()
     }
 }
 
@@ -86,6 +105,15 @@ private extension CharacterListViewController {
     
     @objc func tapButtonRetry() {
         presenter.retryLoad()
+    }
+    
+    func setupSearchBar() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = Localization.CharacterList.searchBarPalceHolder
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = true
+        definesPresentationContext = true
     }
 }
 

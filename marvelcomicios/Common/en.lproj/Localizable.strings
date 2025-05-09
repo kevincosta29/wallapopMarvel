@@ -21,3 +21,4 @@ character.detail.section.series = "Series";
 character.detail.section.stories = "Histórias";
 character.title = "Personajes";
 character.emptyResult = "No se han encontrado valores";
+character.search.placeholder = "Busca un nombre";

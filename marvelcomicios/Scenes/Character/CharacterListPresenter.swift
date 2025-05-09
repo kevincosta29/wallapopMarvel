@@ -15,6 +15,8 @@ protocol CharacterListPresenterInterface {
     func retryLoad()
     func goToDetail(id: Int)
     func loadNextPage(indexRow: Int)
+    func searchFor(text: String)
+    func cancelSearch()
 }
 
 final class CharacterListPresenter: CharacterListPresenterInterface {
@@ -23,8 +25,10 @@ final class CharacterListPresenter: CharacterListPresenterInterface {
     private var flowManager: CharacterListFlowManagerProtocol
     private var currentPage = 0
     private var totalPages = 0
+    private var originalCharacter = [Character]()
+    private var isSearching = false
     weak var view: CharacterListViewInterface?
-    var arrayCharacters: [Character] = []
+    var arrayCharacters = [Character]()
     
     init(dataSource: CharacterListDataSourceProtocol,
          flowManager: CharacterListFlowManagerProtocol) {
@@ -41,6 +45,7 @@ final class CharacterListPresenter: CharacterListPresenterInterface {
             switch response {
             case .success((let array, let pages)):
                 arrayCharacters.append(contentsOf: array)
+                originalCharacter.append(contentsOf: array)
                 currentPage += 1
                 totalPages = pages ?? 0
                 view?.loadContent()
@@ -66,8 +71,24 @@ final class CharacterListPresenter: CharacterListPresenterInterface {
     }
     
     func loadNextPage(indexRow: Int) {
-        if indexRow == arrayCharacters.count - 1 && currentPage < totalPages { // Move to next page and retrieve content
+        if indexRow == arrayCharacters.count - 1 && currentPage < totalPages && !isSearching { // Move to next page and retrieve content
             retrieveCharacterList()
         }
+    }
+    
+    func searchFor(text: String) {
+        guard !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+            isSearching = false
+            arrayCharacters = originalCharacter
+            return
+        }
+        
+        isSearching = true
+        arrayCharacters = originalCharacter.filter({ ($0.name ?? "").contains(text) })
+    }
+    
+    func cancelSearch() {
+        isSearching = false
+        arrayCharacters = originalCharacter
     }
 }

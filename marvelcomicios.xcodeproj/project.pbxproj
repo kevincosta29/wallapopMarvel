@@ -44,7 +44,6 @@
 		0ECA64E026DD5F61000EBE8E /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECA64DF26DD5F61000EBE8E /* Comic.swift */; };
 		0ECA64E226DD630B000EBE8E /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECA64E126DD630B000EBE8E /* Serie.swift */; };
 		0ECA64E826DD78A5000EBE8E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ECA64E726DD78A5000EBE8E /* Launch Screen.storyboard */; };
-		0ECA64EA26DD7DB7000EBE8E /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECA64E926DD7DB7000EBE8E /* PresentationController.swift */; };
 		0ECA64F526DD842E000EBE8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EDCF11C26DBF7F0001BF1C6 /* Assets.xcassets */; };
 		0ED4DA1B2DC40CC3005D4DB4 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 0ED4DA1A2DC40CC3005D4DB4 /* Collections */; };
 		0ED4DA1E2DC627A0005D4DB4 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED4DA1D2DC627A0005D4DB4 /* Localization.swift */; };
@@ -56,7 +55,6 @@
 		0EF60BA62DCD11C300964791 /* SeriesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF60BA52DCD11C300964791 /* SeriesResponse.swift */; };
 		2F259DDA21F88EB200DC70D5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2F259DDC21F88EB200DC70D5 /* InfoPlist.strings */; };
 		2F259DDD21F88EB700DC70D5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2F259DDF21F88EB700DC70D5 /* Localizable.strings */; };
-		2F84692821526AB900AF8E5B /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F84692721526AB900AF8E5B /* CustomView.swift */; };
 		2F84694021536DED00AF8E5B /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F84693F21536DED00AF8E5B /* ErrorResponse.swift */; };
 		4F8982DF2151373300703F44 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8982DE2151373300703F44 /* Extensions.swift */; };
 		4F8982E1215137D400703F44 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8982E0215137D400703F44 /* Keys.swift */; };
@@ -108,7 +106,6 @@
 		0ECA64DF26DD5F61000EBE8E /* Comic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
 		0ECA64E126DD630B000EBE8E /* Serie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serie.swift; sourceTree = "<group>"; };
 		0ECA64E726DD78A5000EBE8E /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		0ECA64E926DD7DB7000EBE8E /* PresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
 		0ED4DA1D2DC627A0005D4DB4 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		0EDCF11C26DBF7F0001BF1C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = marvelcomicios/Assets.xcassets; sourceTree = "<group>"; };
 		0EEE56422783B3F3003EA5D5 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
@@ -119,7 +116,6 @@
 		0EF60BA52DCD11C300964791 /* SeriesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesResponse.swift; sourceTree = "<group>"; };
 		2F259DDB21F88EB200DC70D5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2F259DDE21F88EB700DC70D5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		2F84692721526AB900AF8E5B /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		2F84693F21536DED00AF8E5B /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		4F8982DE2151373300703F44 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4F8982E0215137D400703F44 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
@@ -292,15 +288,6 @@
 			path = Responses;
 			sourceTree = "<group>";
 		};
-		2F84692621526A9300AF8E5B /* Common Classes */ = {
-			isa = PBXGroup;
-			children = (
-				0ECA64E926DD7DB7000EBE8E /* PresentationController.swift */,
-				2F84692721526AB900AF8E5B /* CustomView.swift */,
-			);
-			path = "Common Classes";
-			sourceTree = "<group>";
-		};
 		2F84692921526D3E00AF8E5B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,7 +314,6 @@
 			isa = PBXGroup;
 			children = (
 				0ED4DA1C2DC62792005D4DB4 /* Constants */,
-				2F84692621526A9300AF8E5B /* Common Classes */,
 				4F8982DE2151373300703F44 /* Extensions.swift */,
 				2F259DDF21F88EB700DC70D5 /* Localizable.strings */,
 				2F259DDC21F88EB200DC70D5 /* InfoPlist.strings */,
@@ -525,11 +511,9 @@
 				0E97F130287DF55300B03BBD /* CharacterDetailDataSource.swift in Sources */,
 				0EA5087C277B65D2000B4369 /* Service.swift in Sources */,
 				0EF60BA22DCD116200964791 /* CharacterResponse.swift in Sources */,
-				0ECA64EA26DD7DB7000EBE8E /* PresentationController.swift in Sources */,
 				0E7C5D39277E384600097A23 /* BaseProtocolRequest.swift in Sources */,
 				0E46EEE22DC920A10033CD78 /* CharacterDetailConfigurator.swift in Sources */,
 				4F9111BF215116A60028AC18 /* AppDelegate.swift in Sources */,
-				2F84692821526AB900AF8E5B /* CustomView.swift in Sources */,
 				4F8982E1215137D400703F44 /* Keys.swift in Sources */,
 				4F8982DF2151373300703F44 /* Extensions.swift in Sources */,
 				0EA50877277B6063000B4369 /* MarvelComicsEndpoint.swift in Sources */,

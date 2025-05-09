@@ -10,18 +10,19 @@ import Foundation
 
 enum Localization {
     enum CharacterList {
-        static var title = "character.title".localized()
-        static var emptyResult = "character.emptyResult".localized()
+        static var title: String { "character.title".localized() }
+        static var emptyResult: String { "character.emptyResult".localized() }
+        static var searchBarPalceHolder: String { "character.search.placeholder".localized() }
     }
     
     enum CharacterDetail {
-        static var sectionComics = "character.detail.section.comics".localized()
-        static var sectionSeries = "character.detail.section.series".localized()
-        static var sectionStories = "character.detail.section.stories".localized()
+        static var sectionComics: String { "character.detail.section.comics".localized() }
+        static var sectionSeries: String { "character.detail.section.series".localized() }
+        static var sectionStories: String { "character.detail.section.stories".localized() }
     }
     
     enum Default {
-        static var errorMessage = "defaultErrorMsg".localized()
-        static var errorResponse = "error.response.description".localized()
+        static var errorMessage: String { "defaultErrorMsg".localized() }
+        static var errorResponse: String { "error.response.description".localized() }
     }
 }
