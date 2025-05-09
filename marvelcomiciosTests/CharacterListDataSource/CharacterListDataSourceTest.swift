@@ -19,8 +19,7 @@ class CharacterListDataSourceTest: XCTestCase {
     override func setUpWithError() throws {
         // session = MockURLSession()
         
-        let mockCharacterUrl = try XCTUnwrap(Bundle(for: CharacterListDataSourceTest.self).url(forResource: "characterListMock", withExtension: "json"))
-        dataCharacterResponse = try Data(contentsOf: mockCharacterUrl)
+        dataCharacterResponse = try UnwrapFileHelper.unwrapFileData(name: "characterListMock")
         arrayCharacter = try KParser.parserData(dataCharacterResponse)
     }
     

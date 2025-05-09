@@ -20,12 +20,10 @@ class CharacterDetailDataSourceTest: XCTestCase {
     private let path = "https://gateway.marvel.com:443/v1/public/characters"
     
     override func setUpWithError() throws {
-        let mockSeriesUrl = try XCTUnwrap(Bundle(for: CharacterDetailDataSourceTest.self).url(forResource: "characterSeriesMock", withExtension: "json"))
-        seriesData = try Data(contentsOf: mockSeriesUrl)
+        seriesData = try UnwrapFileHelper.unwrapFileData(name: "characterSeriesMock")
         arraySeries = try KParser.parserData(seriesData)
         
-        let mockComicsUrl = try XCTUnwrap(Bundle(for: CharacterDetailDataSourceTest.self).url(forResource: "characterSeriesMock", withExtension: "json"))
-        comicsData = try Data(contentsOf: mockComicsUrl)
+        comicsData = try UnwrapFileHelper.unwrapFileData(name: "characterSeriesMock")
         arrayComics = try KParser.parserData(comicsData)
     }
     
