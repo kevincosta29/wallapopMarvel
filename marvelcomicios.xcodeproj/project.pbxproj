@@ -11,6 +11,8 @@
 		0E1406A12DCE51D20099626B /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1406A02DCE51D20099626B /* MockURLProtocol.swift */; };
 		0E1406A32DCE5A470099626B /* MockNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1406A22DCE5A470099626B /* MockNetworking.swift */; };
 		0E1406A52DCE612E0099626B /* UnwrapFileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1406A42DCE612E0099626B /* UnwrapFileHelper.swift */; };
+		0E1406A72DCE63F10099626B /* CharacterListFlowManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1406A62DCE63F10099626B /* CharacterListFlowManagerMock.swift */; };
+		0E1406A92DCE64A60099626B /* CharacterListViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1406A82DCE64A60099626B /* CharacterListViewMock.swift */; };
 		0E2D805D2784E02200BF2E8A /* CharacterListPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2D805C2784E02200BF2E8A /* CharacterListPresenterTest.swift */; };
 		0E2D805F2784EE9500BF2E8A /* characterListMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E2D805E2784EE9500BF2E8A /* characterListMock.json */; };
 		0E2D80642784F75800BF2E8A /* CharacterDetailPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2D80632784F75800BF2E8A /* CharacterDetailPresenterTest.swift */; };
@@ -79,6 +81,8 @@
 		0E1406A02DCE51D20099626B /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
 		0E1406A22DCE5A470099626B /* MockNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworking.swift; sourceTree = "<group>"; };
 		0E1406A42DCE612E0099626B /* UnwrapFileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnwrapFileHelper.swift; sourceTree = "<group>"; };
+		0E1406A62DCE63F10099626B /* CharacterListFlowManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListFlowManagerMock.swift; sourceTree = "<group>"; };
+		0E1406A82DCE64A60099626B /* CharacterListViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewMock.swift; sourceTree = "<group>"; };
 		0E2D805C2784E02200BF2E8A /* CharacterListPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListPresenterTest.swift; sourceTree = "<group>"; };
 		0E2D805E2784EE9500BF2E8A /* characterListMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = characterListMock.json; sourceTree = "<group>"; };
 		0E2D80632784F75800BF2E8A /* CharacterDetailPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailPresenterTest.swift; sourceTree = "<group>"; };
@@ -168,6 +172,8 @@
 			children = (
 				0E2D805C2784E02200BF2E8A /* CharacterListPresenterTest.swift */,
 				0E3F6C0728A7C935006A8C4B /* MockedCharacterListDataSource.swift */,
+				0E1406A62DCE63F10099626B /* CharacterListFlowManagerMock.swift */,
+				0E1406A82DCE64A60099626B /* CharacterListViewMock.swift */,
 			);
 			path = CharacterListPresenter;
 			sourceTree = "<group>";
@@ -492,6 +498,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E1406A92DCE64A60099626B /* CharacterListViewMock.swift in Sources */,
+				0E1406A72DCE63F10099626B /* CharacterListFlowManagerMock.swift in Sources */,
 				0E96F68028A7DC6800775A37 /* CharacterListDataSourceTest.swift in Sources */,
 				0E2D805D2784E02200BF2E8A /* CharacterListPresenterTest.swift in Sources */,
 				0E96F67C28A7D8F400775A37 /* MockedCharacterDetailDataSource.swift in Sources */,
